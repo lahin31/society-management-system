@@ -1,0 +1,68 @@
+.edit_profile_wrapper {
+	display: flex;
+	margin: 0 auto;
+	width: 75%;
+	border: 5px solid #C8252C;
+	padding: 15px;
+	min-height: 500px;
+
+	#edit_form {
+		display: flex;
+
+		.right_side_form_wrap {
+			width: 100%;
+			padding-left: 15px;
+			padding-top: 15px;
+
+			.dept_select_field {
+				width: 100%;
+			}
+
+			.profile_pic_wrapper {
+				display: flex;
+				padding-top: 20px;
+
+				.user_image_wrap {
+					width: 78px;
+					height: 78px;
+
+					img {
+						object-fit: cover;
+						width: 100%;
+						height: 100%;
+						border-radius: 50px;
+					}
+				}
+
+				.upload_image_wrap {
+					padding-left: 20px;
+
+					.uploader {
+						height: 80px;
+						align-items: center;
+						justify-content: center;
+						border: 1px dashed #d8e2ef;
+						padding: 1rem;
+						outline: none;
+						cursor: pointer;
+						border-radius: .25rem;
+
+						.uploader-text {
+							padding-top: 15px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 500px) {
+	.edit_profile_wrapper {
+		display: block;
+
+		#edit_form {
+			display: inline-block;
+		}
+	}
+}

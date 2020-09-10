@@ -1,0 +1,26 @@
+/* common class for reuse */
+.flex {
+	display: flex;
+}
+
+.justify-content-space-between {
+	justify-content: space-between;
+}
+
+.text-align-center {
+	text-align: center;
+}
+
+.font-weight-bold {
+	font-weight: bold;
+}
+
+.btn-bg-color {
+	background-color: #C8252C !important;
+	color: #fff !important;
+}
+
+.aa-btn-bg-color {
+	background-color: green !important;
+	color: #fff !important;
+}

@@ -1,0 +1,64 @@
+.registration_wrapper {
+	.error-msg-wrap {
+		margin-top: 25px;
+
+		.error-msg-lists {
+			.error-msg {
+				list-style: none;
+			}
+		}
+	}
+
+	h1 {
+		font-family: 'Ubuntu', sans-serif;
+	}
+
+	.alert_success_msg {
+		margin-top: 20px;
+		margin-bottom: -20px;
+	}
+
+	.dept_wrapper {
+		margin-top: 0 !important;
+		margin-bottom: 14px !important;
+		width: 100%;
+	}
+
+	.dept_select_field {
+		width: 100%;
+	}
+}
+
+// .profile_pic_wrapper {
+// 	display: flex;
+// 	margin-top: 15px;
+// 	margin-bottom: 5px;
+// }
+
+// .user_avatar {
+// 	padding-right: 10px;
+// 	img {
+// 		width: 95%;
+// 	}
+// }
+
+// .avatar_input_field {
+// 	display: flex;
+// 	flex: 0 0 65%;
+// 	align-items: center;
+// 	justify-content: center;
+// 	border: 1px dashed #d8e2ef;
+// 	padding: 1rem;
+// 	outline: none;
+// 	cursor: pointer;
+// 	border-radius: .25rem;
+// }
+
+// .uploader_text {
+// 	font-size: .83333rem;
+// 	font-family: Poppins,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+// 	overflow: hidden;
+// 	white-space: nowrap;
+// 	text-overflow: ellipsis;
+// 	color: #737373;
+// }

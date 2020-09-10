@@ -1,0 +1,46 @@
+.row {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.column {
+	border: 1px solid #EAF4E9;
+	padding: 20px;
+	margin-right: 30px;
+}
+
+.body_text p {
+	margin-top: 15px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+.nav_btn .MuiSvgIcon-root {
+	margin-top: 0;
+}
+
+.fa-icon {
+	font-size: 32px;
+	background: #C8252C;
+	color: #fff;
+	padding: 5px;
+}
+
+.info {
+	.row {
+		.column {
+			max-width: 332px;
+
+			.MuiSvgIcon-root {
+				font-size: 60px;
+				color: #C8252C;
+			}
+
+			h2 {
+				margin-top: 10px;
+				margin-bottom: 20px;
+			}
+		}
+	}
+}

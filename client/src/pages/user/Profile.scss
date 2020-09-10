@@ -1,0 +1,77 @@
+.profile_wrapper {
+	.user_info {
+		display: flex;
+		margin: 0 auto;
+		width: 75%;
+		border: 5px solid #C8252C;
+		padding: 15px;
+		min-height: 500px;
+
+		.profile_pic_wrapper {
+			flex: 1;
+
+			img {
+				width: 90%;
+			}
+		}
+
+		.profile_details {
+			flex: 3;
+
+			.user_full_name {
+				font-size: 70px;
+				font-weight: bold;
+			}
+
+			.dept_info {
+				margin-top: 20px;
+			}
+
+			.reg_socities_wrap {
+				margin-top: 15px;
+
+				.socities {
+					margin-left: 15px;
+					.society_wrap {
+						h3 {
+							padding-top: 12px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 650px) {
+	.profile_wrapper {
+		.user_info {
+			display: block;
+			margin-top: 15px;
+			.profile_pic_wrapper {
+				img {
+					width: 100%;
+				}
+			}
+			.profile_details {
+				.user_full_name {
+					font-size: 25px;
+				}
+				.reg_socities_wrap {
+					.socities {
+						.registered_societies_list {
+							.society_wrap {
+								h3 {
+									padding-top: 10;
+								}
+							}
+						}
+					}
+				}
+			}
+			.edit_profile_btn {
+				margin-top: 20px;
+			}
+		}
+	}
+}

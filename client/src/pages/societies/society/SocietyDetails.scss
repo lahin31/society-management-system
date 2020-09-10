@@ -1,0 +1,35 @@
+.society_details_wrapper {
+	width: 75%;
+	margin: 0 auto;
+	.society_info {
+		margin-top: 15px;
+		.society_description {
+			margin-top: 15px;
+		}
+	}
+	.society_details {
+		margin-top: 25px;
+		.tabs {
+			background: #C8252C;
+			.MuiTabs-indicator {
+				background: #3F51B5;
+			}
+		}
+		.events, .notices {
+			.event:first-child, .notice:first-child {
+				margin-top: 25px;
+			}
+			.event, .notice {
+				background-color: #F1F8FF;
+				padding: 15px;
+				margin-top: 5px;
+				margin-bottom: 25px;
+				max-width: 100%;
+				border: 1px solid #CFCFCF;
+				.content_description {
+					margin-top: 15px;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,39 @@
+.update_society_wrapper {
+	width: 75%;
+	height: 100vh;
+	margin: 10px auto;
+	background-color: #F9FAFA;
+
+	.registered_societies_info {
+		text-align: center;
+		margin-top: -12px;
+
+		.societies {
+			display: flex;
+			flex-wrap: wrap;
+			margin-top: 35px;
+
+			.society {
+				border: 1px solid;
+				padding: 19px;
+				margin-left: 19px;
+				margin-top: 15px;
+				cursor: pointer;
+
+				a {
+					color: #939596;
+				}
+			}
+
+			.selected {
+				background-color: green;
+				color: #fff;
+			}
+		}
+
+		.society_action_btn {
+			text-align: right;
+			margin-top: 20px;
+		}
+	}
+}
