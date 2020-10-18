@@ -181,3 +181,68 @@ exports.getSearchResults = async (req, res) => {
     });
   }
 };
+
+exports.updateJoinRequest = async (req, res) => {
+  try {
+    const {
+      join_result: joinRes,
+      society_id: societyId,
+      event_id: eventId,
+      user_id: userId
+    } = req.body;
+
+    const society = await Society.findById({ _id: societyId });
+
+    if(joinRes === "Going") {
+
+      if(society) {
+        let events = society.events;
+        let event = society.events.filter(ev => String(ev._id) === eventId);
+
+        event[0].registered_members.push(userId)
+
+        await Society.updateOne(
+          { _id: societyId }, 
+          {
+            $set: {
+              events
+            }
+          }
+        )
+
+        return res.status(200).json({
+          message: "updated"
+        })
+      }
+
+    } else if(joinRes === "Not Going") {
+
+        if(society) {
+          let events = society.events;
+          let event = society.events.filter(ev => String(ev._id) === eventId);
+
+          let reg_mem_index = event[0].registered_members.findIndex(mem => mem === userId);
+          
+          event[0].registered_members.splice(reg_mem_index, 1);
+
+          await Society.updateOne(
+            { _id: societyId }, 
+            {
+              $set: {
+                events
+              }
+            }
+          )
+
+          return res.status(200).json({
+            message: "updated"
+          })
+        }
+      }
+
+  } catch (err) {
+    return res.status(500).json({
+      error: err,
+    });
+  }
+}

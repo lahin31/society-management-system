@@ -90,6 +90,7 @@ const RegistrationPage = () => {
           batch.current.value = '';
           password.current.value = '';
           confirm_password.current.value = '';
+          dept.current.value = '';
         } else if (res.errors) {
           setErrors(res.errors);
         } else if(res.error) {

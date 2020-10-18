@@ -253,6 +253,29 @@ const HomePage = (props) => {
     props.history.push(`/societies/${id}`);
   }
 
+  const handleJoin = (join_result, society_id, event_id) => {
+    fetch('/society/handle_join_request', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + context.token,
+      },
+      body: JSON.stringify({
+        join_result,
+        society_id,
+        event_id,
+        user_id: context.userId
+      }),
+    })
+    .then(res => res.json())
+    .then(res => {
+      if(res.message === "updated") {
+        fetchRegSocieties();
+      }
+    })
+    .catch(err => console.log(err))
+  }
+
   return (
     <div
       className="home_wrapper"
@@ -442,6 +465,7 @@ const HomePage = (props) => {
                     registeredSocieties.map((registeredSociety) => {
                       return registeredSociety.events.map(
                         (registeredSocietyEvent) => {
+                          let joining_text = registeredSocietyEvent.registered_members.includes(context.userId) ? "Not Going" : "Going";
                           return (
                             <div
                               className="content"
@@ -450,6 +474,19 @@ const HomePage = (props) => {
                               <div className="content_title">
                                 <h2>
                                   {registeredSocietyEvent.title}
+                                  <span 
+                                    className="join_text_btn"
+                                    style={{
+                                      background: joining_text === "Not Going" ? "#C8252C" : "#006400"
+                                    }}
+                                    onClick={() => handleJoin(
+                                      joining_text, 
+                                      registeredSociety._id,
+                                      registeredSocietyEvent._id
+                                    )}
+                                  >
+                                    {joining_text}
+                                  </span>
                                   <span
                                     className="category_event"
                                     tabIndex="0"
@@ -560,7 +597,7 @@ const HomePage = (props) => {
               <div className="statistics_society_area">
                 <div className="statistcs_area">
                   <p>
-                    There are 10 societies, you have registered{' '}
+                    There are total {societies.length} societies, you have registered{' '}
                     {registeredSocieties &&
                       registeredSocieties.length}{' '}
                     society

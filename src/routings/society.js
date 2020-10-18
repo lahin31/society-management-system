@@ -28,6 +28,7 @@ router.post(
   checkAuth,
   societyController.updateRegisteredSociety
 );
+router.post("/handle_join_request", checkAuth, societyController.updateJoinRequest);
 
 router.put("/update_selected_society", societyController.updateSelectedSociety);
 

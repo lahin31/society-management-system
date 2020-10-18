@@ -205,7 +205,7 @@ const SocietyDetails = () => {
 											</TableRow>
 										</TableHead>
 										<TableBody>
-											{members.map((member) => (
+											{members && members.length > 0 && members.map((member) => (
 												<TableRow key={member._id}>
 													<TableCell component="th" scope="member">
 														{member.name}

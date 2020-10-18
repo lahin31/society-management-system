@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,8 +7,11 @@ import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import Slide from '@material-ui/core/Slide';
+import './Details.scss';
 
 import { tConvert } from '../../helpers/TimeConvert';
+
+import AuthContext from '../../contexts/auth-context';
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -39,6 +42,31 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 const Details = ({ openDetails, handleClose, details }) => {
   const classes = useStyles();
+  const [regMembers, setRegMembers] = useState([]);
+  const context = useContext(AuthContext);
+
+  useEffect(() => {
+    if(details.registered_members && details.registered_members.length > 0) {
+      fetch('/students/fetch_joining_students', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: 'Bearer ' + context.token,
+        },
+        body: JSON.stringify({
+          joiningStudents: JSON.stringify(details.registered_members),
+        }),
+      })
+      .then(res => res.json())
+      .then(res => {
+        setRegMembers(res.students)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+  }, [details]);
+
   return (
     <Dialog
       fullScreen
@@ -93,6 +121,18 @@ const Details = ({ openDetails, handleClose, details }) => {
               </span>
             </h3>
           )}
+        </div>
+        <div className="joining_members_wrap">
+        <h2>Joining Members:</h2>
+          {regMembers && regMembers.length > 0 ? (
+            <>
+              { regMembers.map(regMember => {
+                return <div className="joining_member_wrap" key={regMember._id}>
+                  <span><b>{regMember.name}</b>, <b>Department: </b>{regMember.department}, <b>ID: </b>{regMember.std_id}</span>
+                </div>
+              }) }
+            </>
+          ) : <h3>No members are joining for now</h3>}
         </div>
       </div>
     </Dialog>

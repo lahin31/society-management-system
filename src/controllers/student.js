@@ -197,7 +197,7 @@ exports.generateToken = async (req, res) => {
     }
 
     client.get("refreshTokens", function (err, result) {
-      if (!JSON.parse(result).includes(refreshToken)) {
+      if (result && !JSON.parse(result).includes(refreshToken)) {
         return res.status(403);
       }
     });
@@ -217,3 +217,27 @@ exports.generateToken = async (req, res) => {
     });
   }
 };
+
+exports.fetchJoiningStudents = async (req, res) => {
+  try {
+    const joiningStudents = JSON.parse(req.body.joiningStudents);
+
+    const students = []
+
+    for(let i = 0; i < joiningStudents.length; i++) {
+      let student = await Student.findById({
+        _id: joiningStudents[i]
+      })
+      students.push(student)
+    }
+
+    return res.status(200).json({
+      students
+    })
+
+  } catch (err) {
+    return res.status(500).json({
+      err: err,
+    });
+  }
+}
