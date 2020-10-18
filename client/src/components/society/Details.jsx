@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, memo } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import AppBar from '@material-ui/core/AppBar';
@@ -46,7 +46,7 @@ const Details = ({ openDetails, handleClose, details }) => {
   const context = useContext(AuthContext);
 
   useEffect(() => {
-    if(details.registered_members && details.registered_members.length > 0) {
+    if(details.registered_members) {
       fetch('/students/fetch_joining_students', {
         method: 'POST',
         headers: {
@@ -139,4 +139,4 @@ const Details = ({ openDetails, handleClose, details }) => {
   );
 };
 
-export default React.memo(Details);
+export default memo(Details);
