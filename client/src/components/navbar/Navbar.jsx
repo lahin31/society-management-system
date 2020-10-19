@@ -44,7 +44,11 @@ const Navbar = (props) => {
   return (
     <>
       {path.pathname !== '/admin/login' ? (
-        <nav className="navbar navbar-success" data-testid="navbar">
+        <nav 
+          className="navbar navbar-success" 
+          data-testid="navbar"
+          style={{ justifyContent: context.token ? "stretch" : "space-between" }}
+        >
           <Link to={'/'} id="logo" data-testid="home-link">
             Society Management System
           </Link>

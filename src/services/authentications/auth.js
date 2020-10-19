@@ -74,7 +74,7 @@ exports.registration = async (student_info) => {
     to: `${process.env.EMAIL_ADDRESS}`,
     service: "gmail",
     subject: "Confirmation for a new student...",
-    text: `Someone is requested to register himself/herself. His name is ${existing_student.name}. Check his full details http://localhost:3000/confirmation/${token}`,
+    text: `Someone is requested to register. His/her name is ${existing_student.name}. Check full details http://localhost:3000/confirmation/${token}`,
   };
 
   if (emailUtils.sendEmail(emailOptions) === "success") {
