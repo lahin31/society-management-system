@@ -1,0 +1,49 @@
+.contact_us_wrapper {
+	width: 35%;
+	margin: 0 auto;
+	.title {
+		h2 {
+			text-align: center;
+		}
+	}
+	.fields {
+		margin-top: 20px;
+		width: 100%;
+		.id_field {
+			padding: 16px 22px;
+			width: 100%;
+			border-radius: 4px;
+		}
+		.msg_field {
+			margin-top: 10px;
+			width: 100%;
+			width: 100%;
+			height: 150px;
+			padding: 12px 20px;
+			box-sizing: border-box;
+			border: 2px solid #ccc;
+			border-radius: 4px;
+			background-color: #f8f8f8;
+			resize: none;
+		}
+		.btn_wrap {
+			margin-top: 10px;
+			.send_msg_btn {
+				background-color: #C8252C;
+				border: none;
+				color: white;
+				padding: 15px 32px;
+				text-align: center;
+				text-decoration: none;
+				display: inline-block;
+				font-size: 16px;
+				border-radius: 4px;
+				cursor: pointer;
+			}
+		}
+	}
+}
+
+#contact_us_wrapper {
+	margin-top: 20px;
+}

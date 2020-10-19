@@ -401,10 +401,7 @@ const HomePage = (props) => {
                     </div>
                     <div className="link">
                       <Link
-                        to={
-                          '/profile/' +
-                          context.authenticateUser.username
-                        }
+                        to={'/contact_us'}
                       >
                         <ListItem button>
                           <ListItemIcon>

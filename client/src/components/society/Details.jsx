@@ -128,7 +128,7 @@ const Details = ({ openDetails, handleClose, details }) => {
             <>
               { regMembers.map(regMember => {
                 return <div className="joining_member_wrap" key={regMember._id}>
-                  <span><b>{regMember.name}</b>, <b>Department: </b>{regMember.department}, <b>ID: </b>{regMember.std_id}</span>
+                  <span><b>{regMember.name}</b> from <b>{regMember.department.toUpperCase()}</b></span>
                 </div>
               }) }
             </>

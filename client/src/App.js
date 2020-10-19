@@ -15,6 +15,7 @@ import ForgetPassword from './pages/authentications/ForgetPassword';
 import ConfirmingAccount from './pages/authentications/ConfirmingAccount';
 import ProfilePage from './pages/user/Profile';
 import EditProfile from './pages/user/EditProfile';
+import ContactUs from './pages/contact-us/ContactUs';
 import ResetPassword from './pages/authentications/ResetPassword';
 import Search from './pages/search/Search';
 
@@ -95,6 +96,7 @@ function App() {
             )}
             {token && <Route path="/search/:searchVal" component={Search} />}
             {token && <Route path="/societies/:society_id" component={SocietyDetails} />}
+            {token && <Route path="/contact_us" component={ContactUs} />}
             {!token && <Route path="/login" component={Login} />}
             {!token && (
               <Route path="/registration" component={Registration} />
