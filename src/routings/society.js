@@ -12,6 +12,7 @@ router.post(
 );
 
 router.post("/get_details", checkAuth, societyController.getDetails);
+router.post("/fetch_joined_events", checkAuth, societyController.fetchJoinedEvents);
 
 router.post(
   "/registered_societies",

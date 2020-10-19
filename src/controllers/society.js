@@ -194,7 +194,6 @@ exports.updateJoinRequest = async (req, res) => {
     const society = await Society.findById({ _id: societyId });
 
     if(joinRes === "Going") {
-
       if(society) {
         let events = society.events;
         let event = society.events.filter(ev => String(ev._id) === eventId);
@@ -206,6 +205,17 @@ exports.updateJoinRequest = async (req, res) => {
           {
             $set: {
               events
+            }
+          }
+        )
+
+        await Student.updateOne(
+          { _id: userId },
+          {
+            $push: {
+              joined_events: {
+                society_id: societyId, event_id: eventId
+              }
             }
           }
         )
@@ -232,7 +242,20 @@ exports.updateJoinRequest = async (req, res) => {
                 events
               }
             }
-          )
+          );
+
+          const student = await Student.findById({ _id: userId });
+          let del_event_index = student.joined_events.findIndex(j_ev => j_ev.event_id === eventId);
+          student.joined_events.splice(del_event_index, 1);
+
+          await Student.updateOne(
+            { _id: userId }, 
+            {
+              $set: {
+                joined_events: student.joined_events
+              }
+            }
+          );
 
           return res.status(200).json({
             message: "updated"
@@ -241,6 +264,27 @@ exports.updateJoinRequest = async (req, res) => {
       }
 
   } catch (err) {
+    return res.status(500).json({
+      error: err,
+    });
+  }
+}
+
+exports.fetchJoinedEvents = async (req, res) => {
+  try {
+    const joinedEvents = JSON.parse(req.body.joined_events);
+    const events = [];
+
+    for(let ev of joinedEvents) {
+      let society = await Society.findById({ _id: ev.society_id })
+      let event = society.events.filter(evnt => String(evnt._id) === ev.event_id);
+      events.push(event)
+    }
+
+    return res.status(200).json({
+      events
+    })
+  } catch(err) {
     return res.status(500).json({
       error: err,
     });

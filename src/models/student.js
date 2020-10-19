@@ -53,6 +53,10 @@ const studentSchema = new Schema({
     required: true,
   },
   registered_societies: [],
+  joined_events: {
+    type: Array,
+    "default": []
+  }
 });
 
 module.exports = mongoose.model("Student", studentSchema);

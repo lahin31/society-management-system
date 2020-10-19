@@ -43,6 +43,13 @@
 	}
 }
 
+.upcoming_events_wrap {
+	margin: 0 auto;
+	width: 75%;
+	border: 5px solid #C8252C;
+	padding: 15px;
+}
+
 @media(max-width: 650px) {
 	.profile_wrapper {
 		.user_info {

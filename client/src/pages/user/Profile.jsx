@@ -12,6 +12,7 @@ import './Profile.scss';
 const ProfilePage = (props) => {
   const [user, setUser] = useState({});
   const [registeredSocities, setRegisteredSocities] = useState([]);
+  const [joinedEvents, setJoinedEvents] = useState([]);
   const [loading, setLoading] = useState(true);
   const context = useContext(AuthContext);
 
@@ -61,6 +62,7 @@ const ProfilePage = (props) => {
         if (res.student && isMounted) {
           setLoading(false);
           setUser(res.student);
+          fetchJoinedEvents(res.student.joined_events)
         }
       })
       .catch((err) => {
@@ -72,6 +74,22 @@ const ProfilePage = (props) => {
       isMounted = false;
     };
   }, [context]);
+
+  const fetchJoinedEvents = joined_events => {
+    fetch('/society/fetch_joined_events', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + context.token,
+      },
+      body: JSON.stringify({
+        joined_events: JSON.stringify(joined_events),
+      }),
+    })
+    .then(res => res.json())
+    .then(res => setJoinedEvents(res.events.flat()))
+    .catch(err => console.log(err))
+  }
 
   const goToEditPage = (username) => {
     props.history.push(`/edit-profile/${username}`);
@@ -170,6 +188,18 @@ const ProfilePage = (props) => {
             </div>
           </div>
         )}
+      </div>
+      <div className="upcoming_events_wrap">
+        <h2>Upcoming events</h2>
+        <div className="events">
+          {joinedEvents && joinedEvents.length > 0 && joinedEvents.map(j_ev => {
+            return (
+              <div key={j_ev._id}>
+                <span>{j_ev.title}</span>
+              </div>
+            )
+          })}
+        </div>
       </div>
       <Footer />
     </>
