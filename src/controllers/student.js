@@ -122,11 +122,12 @@ exports.studentForgetPassword = async (req, res) => {
       from: `${process.env.EMAIL_ADDRESS}`,
       to: `${student.email}`,
       service: "gmail",
-      subject: "Link to reset password",
-      text: `You are receiving this because you (or someone else) have requested the reset of the password for your account.
-        Please click on the following link or paste into your browser to complete the process within one hour of receiving it:
+      subject: "Reset Password",
+      text: `
+        Recently a request was submitted to reset your password for our client area. If you did not request this, please ignore this email. It will expire and become useless in 2 hours time.
+        To reset your password, please visit the url below:
         http://localhost:3000/reset/${token}
-        If you did not request this, please skip this your email and your password will remain unchanged.`,
+      `
     };
 
     if (emailUtils.sendEmail(emailOptions) === "success") {
