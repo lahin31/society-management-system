@@ -71,34 +71,6 @@ const Navbar = (props) => {
               />
             </div>
           )}
-          {context.token && (
-            // <Button variant="contained" color="secondary" className="nav_btn" onClick={handleLogout}>Logout</Button>
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <IconButton
-                aria-label="more"
-                aria-controls="long-menu"
-                aria-haspopup="true"
-                onClick={handleClick}
-              >
-                <MoreVertIcon />
-              </IconButton>
-              <Menu
-                id="simple-menu"
-                anchorEl={anchorEl}
-                keepMounted
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <Link
-                  to={'/profile/' + context.authenticateUser.username}
-                >
-                  <MenuItem onClick={handleClose}>Profile</MenuItem>
-                </Link>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
-            </div>
-          )}
         </nav>
       ) : null}
     </>

@@ -14,6 +14,7 @@ const ProfilePage = (props) => {
   const [registeredSocities, setRegisteredSocities] = useState([]);
   const [joinedEvents, setJoinedEvents] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [joiningEventLoader, setJoiningEventLoader] = useState(false);
   const context = useContext(AuthContext);
 
   useEffect(() => {
@@ -76,6 +77,7 @@ const ProfilePage = (props) => {
   }, [context]);
 
   const fetchJoinedEvents = joined_events => {
+    setJoiningEventLoader(true);
     fetch('/society/fetch_joined_events', {
       method: "POST",
       headers: {
@@ -87,8 +89,8 @@ const ProfilePage = (props) => {
       }),
     })
     .then(res => res.json())
-    .then(res => setJoinedEvents(res.events.flat()))
-    .catch(err => console.log(err))
+    .then(res => setJoinedEvents(res.events.flat()) || setJoiningEventLoader(false))
+    .catch(err => console.log(err) || setJoiningEventLoader(false));
   }
 
   const goToEditPage = (username) => {
@@ -192,13 +194,15 @@ const ProfilePage = (props) => {
       <div className="upcoming_events_wrap">
         <h2>Upcoming events</h2>
         <div className="events">
-          {joinedEvents && joinedEvents.length > 0 && joinedEvents.map(j_ev => {
-            return (
-              <div key={j_ev._id}>
-                <span>{j_ev.title}</span>
-              </div>
-            )
-          })}
+          {joiningEventLoader ? <Loader width={80} height={80} /> : <>
+            {joinedEvents && joinedEvents.length > 0 && joinedEvents.map(j_ev => {
+              return (
+                <div key={j_ev._id}>
+                  <span>{j_ev.title}</span>
+                </div>
+              )
+            })}
+          </>}
         </div>
       </div>
       <Footer />
