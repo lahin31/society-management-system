@@ -16,7 +16,7 @@ exports.updateStudentInfo = async (req, res) => {
     const name = req.body.name;
     const username = req.body.username;
     const email = req.body.email;
-    const id = req.body.id;
+    const stdId = req.body.std_id;
     const batch = req.body.batch;
     const department = req.body.department;
     var file = req.files !== null ? req.files.file : "";
@@ -44,14 +44,24 @@ exports.updateStudentInfo = async (req, res) => {
       });
     }
 
-    const student_update = await Student.updateOne(
+    const another = await Student.find({ std_id: stdId });
+
+    if(student.std_id !== stdId && another && another.length > 0) {
+      return res
+              .status(400)
+              .json({
+                error: "This id is not available"
+              })
+    }
+
+    await Student.updateOne(
       { _id: studentId },
       {
         $set: {
           name,
           username,
           email,
-          id,
+          std_id: stdId,
           batch,
           department,
           ...(req.files !== null && {

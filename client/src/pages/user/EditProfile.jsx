@@ -5,7 +5,7 @@ import React, {
   useRef,
 } from 'react';
 import { withRouter } from 'react-router-dom';
-import axios from 'axios';
+import Alert from '@material-ui/lab/Alert';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const EditProfile = (props) => {
+const EditProfile = ({ history }) => {
   const [user, setUser] = useState({});
   const [name, setName] = useState('');
   const [username, setUserName] = useState('');
@@ -50,6 +50,7 @@ const EditProfile = (props) => {
   const [oldPassword, setOldPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [loading, setLoading] = useState(true);
+  const [errorMsg, setErrorMsg] = useState('');
   const inputOpenFileRef = useRef();
   const context = useContext(AuthContext);
   const classes = useStyles();
@@ -126,16 +127,19 @@ const EditProfile = (props) => {
     }
     formData.append('userId', context.userId);
 
-    axios
-      .put(`/students/update-student-info`, formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          Authorization: 'Bearer ' + context.token,
-        },
-      })
-      .then((res) => {
-        if (res.data.message === 'Successfully Updated') {
-          props.history.push('/profile/' + user.username);
+    fetch('/students/update-student-info', {
+      method: 'POST',
+      headers: {
+        Authorization: 'Bearer ' + context.token,
+      },
+      body: formData
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res?.message) {
+          history.push('/profile/' + user.username);
+        } else if(res.error) {
+          setErrorMsg(res.error)
         }
       })
       .catch((err) => console.log(err));
@@ -157,6 +161,9 @@ const EditProfile = (props) => {
           </div>
         ) : (
           <div className="user_info">
+            { errorMsg && <Alert severity="error" className="error-msg-wrap">
+              {errorMsg}
+            </Alert>}
             <form
               className={classes.form}
               id="edit_form"
