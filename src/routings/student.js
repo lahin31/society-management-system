@@ -22,7 +22,7 @@ router.post(
 );
 router.post("/fetch_joining_students", checkAuth, studentsController.fetchJoiningStudents);
 router.get("/confirmation/:token", authController.confirmingAccount);
-
 router.post("/update-student-info", studentsController.updateStudentInfo);
+router.post("/contact_us", checkAuth, studentsController.contactUs);
 
 module.exports = router;

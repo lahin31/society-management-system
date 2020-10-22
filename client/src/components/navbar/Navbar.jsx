@@ -1,9 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link, withRouter, useLocation } from 'react-router-dom';
 import AuthContext from '../../contexts/auth-context';
 import './Navbar.scss';
@@ -11,31 +7,11 @@ import './Navbar.scss';
 const Navbar = (props) => {
   const [searchVal, setSearchVal] = useState('');
   const context = useContext(AuthContext);
-  const [anchorEl, setAnchorEl] = React.useState(null);
   const path = useLocation();
-
-  useEffect(() => {
-    if (context.userId) {
-      setAnchorEl(null);
-    }
-  }, [context]);
 
   useEffect(() => {
     if (searchVal !== '') props.history.push('/search/' + searchVal);
   }, [props.history, searchVal]);
-
-  const handleLogout = () => {
-    context.logout();
-    props.history.push('/login');
-  };
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const handleSeachValue = (e) => {
     setSearchVal(e.target.value);

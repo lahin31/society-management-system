@@ -65,7 +65,7 @@ const Details = ({ openDetails, handleClose, details }) => {
         console.log(err)
       })
     }
-  }, [details]);
+  }, [details, context.token]);
 
   return (
     <Dialog

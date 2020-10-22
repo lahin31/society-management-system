@@ -252,3 +252,36 @@ exports.fetchJoiningStudents = async (req, res) => {
     });
   }
 }
+
+exports.contactUs = async (req, res) => {
+  try {
+    const infoWithMsg = req.body.infoWithMsg;
+
+    const emailOptions = {
+      from: infoWithMsg.email,
+      to: `${process.env.EMAIL_ADDRESS}`,
+      service: "gmail",
+      subject: "Message from " + infoWithMsg.name,
+      text: `
+        Name: ${infoWithMsg.name}
+        Department: ${infoWithMsg.department}
+        Batch: ${infoWithMsg.batch}
+        Message: ${infoWithMsg.message}
+      `
+    };
+  
+    if (emailUtils.sendEmail(emailOptions) === "success") {
+      return res.status(200).json({
+        message: "Message sent"
+      })
+    } else {
+      return res.status(500).json({
+        error: "Something went wrong",
+      });
+    }
+  } catch(err) {
+    return res.status(500).json({
+      err: err,
+    });
+  }
+}
