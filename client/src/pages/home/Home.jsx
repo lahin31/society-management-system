@@ -35,7 +35,6 @@ const HomePage = (props) => {
   const [societies, setSocieties] = useState([]);
   const [selected_societies, setSelectedSocieties] = useState([]);
   const [registeredSocieties, setRegisteredSocieties] = useState([]);
-  const [showEditBtn, setShowEditBtn] = useState(false);
   const [openDetails, setOpenDetails] = useState(false);
   const [openFollowDialog, setOpenFollowDialog] = useState(false);
   const context = useContext(AuthContext);
@@ -317,7 +316,9 @@ const HomePage = (props) => {
                 </div>
               </div>
               <div className="user_details_area">
-                <div className="profile_info">
+                <div className="profile_info" onClick={() =>
+                  goToEditPage(context.authenticateUser.username)
+                }>
                   {student.profile_picture !== '' ? (
                     <img
                       src={
@@ -326,35 +327,13 @@ const HomePage = (props) => {
                         student.profile_picture
                       }
                       alt={student.name}
-                      onMouseEnter={() => setShowEditBtn(true)}
-                      onMouseLeave={() => setShowEditBtn(false)}
                     />
                   ) : (
                     <img
                       src={require('../../assets/images/default_img.png')}
                       alt="user avatar"
-                      onMouseEnter={() => setShowEditBtn(true)}
-                      onMouseLeave={() => setShowEditBtn(false)}
                     />
                   )}
-                  <div
-                    className="edit_msg"
-                    style={{
-                      display: showEditBtn ? 'block' : 'none',
-                    }}
-                    onMouseEnter={() => setShowEditBtn(true)}
-                    onMouseLeave={() => setShowEditBtn(false)}
-                  >
-                    <span
-                      onClick={() =>
-                        goToEditPage(
-                          context.authenticateUser.username
-                        )
-                      }
-                    >
-                      Edit
-                    </span>
-                  </div>
                   <div className="profile_name">
                     <h3>
                       <Link
