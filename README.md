@@ -30,9 +30,9 @@ Others
 * Eslint
 * Prettier
 
-<img src="./assets/images/page-1.png" width="50%" height="50%"></img> 
-<img src="./assets/images/page-2.png" width="50%" height="50%"></img> 
-<img src="./assets/images/page-3.png" width="50%" height="50%"></img> 
-<img src="./assets/images/page-4.png" width="50%" height="50%"></img> 
-<img src="./assets/images/page-5.png" width="50%" height="50%"></img> 
-<img src="./assets/images/page-6.png" width="50%" height="50%"></img> 
+<img src="./assets/images/page-1.png" width="100%" height="50%"></img> 
+<img src="./assets/images/page-2.png" width="100%" height="50%"></img> 
+<img src="./assets/images/page-3.png" width="100%" height="50%"></img> 
+<img src="./assets/images/page-4.png" width="100%" height="50%"></img> 
+<img src="./assets/images/page-5.png" width="100%" height="50%"></img> 
+<img src="./assets/images/page-6.png" width="100%" height="50%"></img> 
