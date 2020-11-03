@@ -15,6 +15,7 @@ Server Side
 Database
 
 * MongoDB/Mongoose
+* Redis
 
 Client Side
 
@@ -28,3 +29,10 @@ Others
 
 * Eslint
 * Prettier
+
+<img src="./assets/images/pic-1.png" width="50%" height="50%"></img> 
+<img src="./assets/images/pic-2.png" width="50%" height="50%"></img> 
+<img src="./assets/images/pic-3.png" width="50%" height="50%"></img> 
+<img src="./assets/images/pic-4.png" width="50%" height="50%"></img> 
+<img src="./assets/images/pic-5.png" width="50%" height="50%"></img> 
+<img src="./assets/images/pic-6.png" width="50%" height="50%"></img> 
