@@ -55,7 +55,6 @@ const HomePage = (props) => {
 
   useEffect(() => {
     let isMounted = true;
-
     fetchAuthUser(context)
       .then((student) => {
         if (student && isMounted) {
@@ -167,10 +166,6 @@ const HomePage = (props) => {
   const handleLogout = () => {
     context.logout();
     props.history.push('/login');
-  };
-
-  const goToEditPage = (username) => {
-    props.history.push(`/edit-profile/${username}`);
   };
 
   const fetchRegSocieties = () => {
@@ -316,9 +311,7 @@ const HomePage = (props) => {
                 </div>
               </div>
               <div className="user_details_area">
-                <div className="profile_info" onClick={() =>
-                  goToEditPage(context.authenticateUser.username)
-                }>
+                <div className="profile_info">
                   {student.profile_picture !== '' ? (
                     <img
                       src={
@@ -392,10 +385,7 @@ const HomePage = (props) => {
                     </div>
                     <div className="link">
                       <Link
-                        to={
-                          '/profile/' +
-                          context.authenticateUser.username
-                        }
+                        to={'/about_us'}
                       >
                         <ListItem button>
                           <ListItemIcon>

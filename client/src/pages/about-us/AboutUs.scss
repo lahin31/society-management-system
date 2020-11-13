@@ -1,0 +1,12 @@
+.about_us_wrapper {
+	width: 75%;
+	margin: 10px auto;
+	text-align: center;
+	.about_us_content {
+		margin-top: 30px;
+		text-align: justify;
+		p {
+			margin-top: 5px;
+		}
+	}
+}
