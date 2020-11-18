@@ -67,7 +67,6 @@ const Login = (props) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        setLoading(false);
         if (!res.error) {
           context.login(
             res.accessToken,
@@ -94,8 +93,11 @@ const Login = (props) => {
         }
       })
       .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
         setLoading(false);
-      });
+      })
   };
 
   return (

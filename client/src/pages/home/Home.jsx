@@ -66,10 +66,12 @@ const HomePage = (props) => {
           ) {
             setSelectedSocieties(student.registered_societies);
           }
-          setLoading(false);
         }
       })
       .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
         setLoading(false);
       });
 

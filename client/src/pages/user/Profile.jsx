@@ -61,14 +61,16 @@ const ProfilePage = (props) => {
       .then((res) => res.json())
       .then((res) => {
         if (res.student && isMounted) {
-          setLoading(false);
           setUser(res.student);
           fetchJoinedEvents(res.student.joined_events)
         }
       })
       .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
         setLoading(false);
-      });
+      })
 
     return () => {
       // eslint-disable-next-line

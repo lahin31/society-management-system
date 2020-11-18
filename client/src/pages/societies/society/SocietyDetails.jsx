@@ -87,11 +87,13 @@ const SocietyDetails = () => {
 			if(isMounted) {
 				setMembers(res.members);
 				setSociety(res.society);
-				setLoading(false);
 				document.title = `${res.society.name}`;
 			}
 		})
-		.catch(_ => setLoading(false));
+		.catch(err => console.error(err))
+		.finally(() => {
+			setLoading(false);
+		})
 
 		return () => {
 			isMounted = false;

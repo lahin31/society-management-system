@@ -78,7 +78,6 @@ const RegistrationPage = () => {
     })
       .then((res) => res.json())
       .then((res) => {
-        setLoading(false);
         if (res.message === 'User Created') {
           setMessage(
             'Your account is created successfully, please wait an admin will confirm your account.'
@@ -98,8 +97,11 @@ const RegistrationPage = () => {
         }
       })
       .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
         setLoading(false);
-      });
+      })
   };
 
   const handleDeptChange = (e) => setDept(e.target.value);

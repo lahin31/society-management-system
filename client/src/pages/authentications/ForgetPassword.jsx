@@ -54,7 +54,6 @@ const ForgetPassword = (props) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        setLoading(false);
         if (res.error === 'Please provide an email') {
           setErrorMsg('Please provide an email');
         } else if (res.error === "Email doesn't exist") {
@@ -67,8 +66,10 @@ const ForgetPassword = (props) => {
         }
       })
       .catch((err) => {
-        setLoading(false);
         setErrorMsg('Something went wrong');
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 

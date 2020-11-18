@@ -65,15 +65,17 @@ const EditProfile = ({ history }) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        setLoading(false);
         if (res.student) {
           setUser(res.student);
           document.title = `${res.student.name} - Edit`;
         }
       })
       .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
         setLoading(false);
-      });
+      })
   }, [context]);
 
   useEffect(() => {
