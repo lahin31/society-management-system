@@ -6,6 +6,7 @@ exports[`renders 1`] = `
     <nav
       class="navbar navbar-success"
       data-testid="navbar"
+      style="justify-content: space-between;"
     >
       <a
         data-testid="home-link"

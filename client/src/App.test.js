@@ -36,6 +36,4 @@ it("should navigate to the login page", () => {
   const {getByTestId} = renderWithRouter(<App />);
   fireEvent.click(getByTestId("login-link"));
   expect(getByTestId("login-title")).toHaveTextContent("Login")
-})
-
-
+});
