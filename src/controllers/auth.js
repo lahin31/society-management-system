@@ -33,16 +33,14 @@ exports.createStudent = async (req, res) => {
     }
 
     if (result.message === "User Created") {
-      return res.status(200).json({
+      res.status(200).json({
         message: result.message,
       });
     } else {
-      return res.status(500);
+      res.status(500);
     }
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -67,7 +65,7 @@ exports.postLogin = async (req, res) => {
     }
 
     const { message, userId, accessToken, expiresIn, refreshToken } = result;
-    return res.status(200).json({
+    res.status(200).json({
       message,
       userId,
       accessToken,
@@ -75,9 +73,7 @@ exports.postLogin = async (req, res) => {
       refreshToken,
     });
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -100,13 +96,11 @@ exports.confirmingAccount = async (req, res) => {
       });
     }
 
-    return res.status(200).json({
+    res.status(200).json({
       student,
     });
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -133,47 +127,38 @@ exports.activateAccount = async (req, res) => {
       account_confirmation: "activated",
     });
 
-    return res.status(200).json({
+    res.status(200).json({
       message: "Account activated",
     });
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
 exports.deactivateAccount = async (req, res) => {
   try {
     const token = req.body.token;
-
     if (!token) {
-      return res.status(401).json({
+      return res.status(400).json({
         error: "Valid token needed",
       });
     }
-
     const student = await Student.findOne({
       accountConfirmationToken: token,
     });
-
     if (!student) {
       return res.status(404).json({
         error: "No student found",
       });
     }
-
     await student.updateOne({
       account_confirmation: "deactivated",
     });
-
-    return res.status(200).json({
-      message: "Account Deactivated",
+    res.status(200).json({
+      message: "Account Deactivated"
     });
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -191,12 +176,10 @@ exports.fetchAuthenticateUser = async (req, res) => {
         error: "Need a valid user",
       });
     }
-    return res.status(200).json({
+    res.status(200).json({
       student,
     });
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };

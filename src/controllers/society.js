@@ -9,13 +9,11 @@ exports.fetchSocieties = async (req, res) => {
     const fetchSocieties_service = await SocietyService.fetchSocieties();
     const { societies } = fetchSocieties_service;
 
-    return res.status(200).json({
+    res.status(200).json({
       societies,
     });
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -27,13 +25,11 @@ exports.getRegisteredSocieties = async (req, res) => {
     );
     const { registered_societies } = getRegisteredSocieties_service;
 
-    return res.status(200).json({
+    res.status(200).json({
       registered_societies,
     });
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -61,26 +57,12 @@ exports.saveSelectedSocieties = async (req, res) => {
 
     const { message, student } = saveSelectedSocieties_service;
 
-    return res.status(200).json({
+    res.status(200).json({
       message,
       student,
     });
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
-  }
-};
-
-exports.updateSelectedSociety = async (req, res) => {
-  try {
-    return res.status(200).json({
-      result: req.body,
-    });
-  } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -108,13 +90,9 @@ exports.updateRegisteredSociety = async (req, res) => {
       });
     }
 
-    return res.status(200).json({
-      message,
-    });
+    res.status(200).json({ message });
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -139,15 +117,13 @@ exports.getDetails = async (req, res) => {
       });
     }
 
-    return res.status(200).json({
+    res.status(200).json({
       society_id: getDetails_service.society_id,
       society: getDetails_service.society,
       members: getDetails_service.members
     });
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -170,15 +146,13 @@ exports.getSearchResults = async (req, res) => {
 
     const { events_result, notices_result } = getSearchResults_service;
 
-    return res.status(200).json({
+    res.status(200).json({
       searchVal,
       events_result,
       notices_result,
     });
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -220,7 +194,7 @@ exports.updateJoinRequest = async (req, res) => {
           }
         )
 
-        return res.status(200).json({
+        res.status(200).json({
           message: "updated"
         })
       }
@@ -257,16 +231,14 @@ exports.updateJoinRequest = async (req, res) => {
             }
           );
 
-          return res.status(200).json({
+          res.status(200).json({
             message: "updated"
           })
         }
       }
 
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 }
 
@@ -281,12 +253,10 @@ exports.fetchJoinedEvents = async (req, res) => {
       events.push(event)
     }
 
-    return res.status(200).json({
+    res.status(200).json({
       events
     })
   } catch(err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 }

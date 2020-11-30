@@ -84,20 +84,18 @@ exports.updateStudentInfo = async (req, res) => {
               error: err,
             });
           }
-          return res.status(200).json({
+          res.status(200).json({
             message: "Successfully Updated",
           });
         }
       );
     } else {
-      return res.status(200).json({
+      res.status(200).json({
         message: "Successfully Updated",
       });
     }
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -141,16 +139,14 @@ exports.studentForgetPassword = async (req, res) => {
     };
 
     if (emailUtils.sendEmail(emailOptions) === "success") {
-      return res.status(200).json({
+      res.status(200).json({
         message: "recovery email sent",
       });
     } else {
-      return res.status(500);
+      res.status(500);
     }
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -163,14 +159,12 @@ exports.checkResetToken = async (req, res) => {
         err: "Something went wrong",
       });
     }
-    return res.status(200).json({
+    res.status(200).json({
       token,
       studentId: student._id,
     });
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -187,15 +181,13 @@ exports.handleResetPassword = async (req, res) => {
             error: err,
           });
         }
-        return res.status(200).json({
+        res.status(200).json({
           message: "password updated",
         });
       }
     );
   } catch (err) {
-    return res.status(500).json({
-      error: err,
-    });
+    res.status(500);
   }
 };
 
@@ -217,15 +209,13 @@ exports.generateToken = async (req, res) => {
       if (err) return res.status(403);
 
       const accessToken = genAccTkn.generateAccessToken();
-      return res.status(200).json({
+      res.status(200).json({
         message: "success",
-        accessToken,
+        accessToken
       });
     });
   } catch (err) {
-    return res.status(500).json({
-      err: err,
-    });
+    res.status(500);
   }
 };
 
@@ -242,21 +232,18 @@ exports.fetchJoiningStudents = async (req, res) => {
       students.push(student)
     }
 
-    return res.status(200).json({
+    res.status(200).json({
       students
-    })
+    });
 
   } catch (err) {
-    return res.status(500).json({
-      err: err,
-    });
+    res.status(500);
   }
 }
 
 exports.contactUs = async (req, res) => {
   try {
     const infoWithMsg = req.body.infoWithMsg;
-
     const emailOptions = {
       from: infoWithMsg.email,
       to: `${process.env.EMAIL_ADDRESS}`,
@@ -271,17 +258,15 @@ exports.contactUs = async (req, res) => {
     };
   
     if (emailUtils.sendEmail(emailOptions) === "success") {
-      return res.status(200).json({
+      res.status(200).json({
         message: "Message sent"
       })
     } else {
-      return res.status(500).json({
+      res.status(500).json({
         error: "Something went wrong",
       });
     }
   } catch(err) {
-    return res.status(500).json({
-      err: err,
-    });
+    res.status(500);
   }
 }
