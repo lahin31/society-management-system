@@ -9,13 +9,13 @@
 	}
 
 	.content {
-		background-color: #F1F8FF;
+		background-color: var(--color-secondary);
 		padding: 15px;
 		margin-top: 5px;
 		margin-right: 10px;
 		margin-bottom: 25px;
 		max-width: 100%;
-		border: 1px solid #CFCFCF;
+		border: 1px solid var(--border-color);
 
 		.content_title {
 			h2 {

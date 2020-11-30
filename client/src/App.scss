@@ -1,3 +1,5 @@
+@import "./constants/global/variables.scss";
+
 .makeStyles-paper-33,
 .makeStyles-paper-266 {
   margin-top: 40px !important;
@@ -13,13 +15,13 @@
   margin-right: 50px !important;
   margin-top: 20px !important;
   color: #fff !important;
-  background-color: #C8252C !important;
+  background-color: var(--color-primary) !important;
 }
 
 .fa-arrow-right {
   background: #fff;
   padding: 6px;
-  color: #C8252C;
+  color: var(--color-primary);
   margin-left: 7px;
   border-radius: 50%;
 }

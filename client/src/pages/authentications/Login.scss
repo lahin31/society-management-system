@@ -1,6 +1,8 @@
+@import "../../constants/global/variables.scss";
+
 .login_wrapper {
 	h1 {
-		font-family: 'Ubuntu', sans-serif;
+		font-family: var(--font-family), sans-serif;
 	}
 	.error-msg {
 		margin-top: 20px;

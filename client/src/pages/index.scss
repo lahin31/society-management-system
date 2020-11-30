@@ -1,3 +1,5 @@
+@import "../constants/global/variables.scss";
+
 .row {
 	display: flex;
 	justify-content: center;
@@ -22,7 +24,7 @@
 
 .fa-icon {
 	font-size: 32px;
-	background: #C8252C;
+	background: var(--color-primary);;
 	color: #fff;
 	padding: 5px;
 }
@@ -34,7 +36,7 @@
 
 			.MuiSvgIcon-root {
 				font-size: 60px;
-				color: #C8252C;
+				color: var(--color-primary);;
 			}
 
 			h2 {

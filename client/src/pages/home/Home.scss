@@ -1,8 +1,10 @@
+@import "../../constants/global/variables.scss";
+
 .home_wrapper,
 .update_society_wrapper {
 	// background-color: #F1F2F2;
 	height: 100vh;
-	font-family: 'Ubuntu', sans-serif;
+	font-family: var(--font-family), sans-serif;
 
 	.home {
 		width: 75%;
@@ -54,8 +56,8 @@
 
 		.user_details_area {
 			flex: 1 0%;
-			background-color: #F1F8FF;
-			border: 1px solid #CFCFCF;
+			background-color: var(--color-secondary);
+			border: 1px solid var(--border-color);
 
 			.profile_info {
 				flex: 1;
@@ -129,13 +131,13 @@
 				padding-right: 8px;
 
 				.content {
-					background-color: #F1F8FF;
+					background-color: var(--color-secondary);
 					padding: 15px;
 					margin-top: 5px;
 					margin-right: 10px;
 					margin-bottom: 25px;
 					max-width: 100%;
-					border: 1px solid #CFCFCF;
+					border: 1px solid var(--border-color);
 
 					.content_title {
 						h2 {
@@ -186,18 +188,18 @@
 				display: flex;
 				justify-content: center;
 				align-items: center;
-				background-color: #F1F8FF;
+				background-color: var(--color-secondary);
 				padding-left: 17px;
 				max-height: 100px;
-				border: 1px solid #CFCFCF;
+				border: 1px solid var(--border-color);
 				padding: 25px;
 			}
 
 			.societies_area {
 				margin-top: 25px;
-				background-color: #F1F8FF;
+				background-color: var(--color-secondary);
 				padding-left: 17px;
-				border: 1px solid #CFCFCF;
+				border: 1px solid var(--border-color);
 				padding: 15px;
 
 				.societies_area_title {
@@ -228,8 +230,8 @@
 							background: inherit;
 							padding: 7px;
 							cursor: pointer;
-							color: #C8252C;
-							border: 1px solid #C8252C;
+							color: var(--color-primary);
+							border: 1px solid var(--color-primary);
 							border-radius: 20px;
 						}
 					}
@@ -265,7 +267,7 @@
 
 					svg {
 						font-size: 25px;
-						fill: #C8252C;
+						fill: var(--color-primary);
 						font-weight: bolder;
 					}
 				}
@@ -345,8 +347,8 @@
 						background: inherit;
 						padding: 7px;
 						cursor: pointer;
-						color: #C8252C;
-						border: 1px solid #C8252C;
+						color: var(--color-primary);
+						border: 1px solid var(--color-primary);
 						border-radius: 20px;
 					}
 				}

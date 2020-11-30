@@ -1,8 +1,10 @@
+@import "../../constants/global/variables.scss";
+
 .edit_profile_wrapper {
 	display: flex;
 	margin: 0 auto;
 	width: 75%;
-	border: 5px solid #C8252C;
+	border: 5px solid var(--color-primary);
 	padding: 15px;
 	min-height: 500px;
 

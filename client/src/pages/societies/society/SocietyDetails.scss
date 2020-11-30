@@ -1,3 +1,5 @@
+@import "../../../constants/global/variables.scss";
+
 .society_details_wrapper {
 	width: 75%;
 	margin: 0 auto;
@@ -10,7 +12,7 @@
 	.society_details {
 		margin-top: 25px;
 		.tabs {
-			background: #C8252C;
+			background: var(--color-primary);
 			.MuiTabs-indicator {
 				background: #3F51B5;
 			}
@@ -20,12 +22,12 @@
 				margin-top: 25px;
 			}
 			.event, .notice {
-				background-color: #F1F8FF;
+				background-color: var(--color-secondary);
 				padding: 15px;
 				margin-top: 5px;
 				margin-bottom: 25px;
 				max-width: 100%;
-				border: 1px solid #CFCFCF;
+				border: 1px solid var(--border-color);
 				.content_description {
 					margin-top: 15px;
 				}

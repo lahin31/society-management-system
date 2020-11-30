@@ -1,7 +1,9 @@
+@import "../../constants/global/variables.scss";
+
 .loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #C8252C;
+  border-top: 16px solid var(--color-primary);
   width: 120px;
   height: 120px;
   -webkit-animation: spin 2s linear infinite; /* Safari */

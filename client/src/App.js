@@ -22,7 +22,7 @@ import Search from './pages/search/Search';
 
 import Navbar from './components/navbar/Navbar';
 
-import './App.css';
+import './App.scss';
 import './constants/Classes.css';
 import SocietyDetails from './pages/societies/society/SocietyDetails';
 

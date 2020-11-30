@@ -1,9 +1,11 @@
+@import "../../constants/global/variables.scss";
+
 .profile_wrapper {
 	.user_info {
 		display: flex;
 		margin: 0 auto;
 		width: 75%;
-		border: 5px solid #C8252C;
+		border: 5px solid var(--color-primary);
 		padding: 15px;
 		min-height: 400px;
 
@@ -46,7 +48,7 @@
 .upcoming_events_wrap {
 	margin: 0 auto;
 	width: 75%;
-	border: 5px solid #C8252C;
+	border: 5px solid var(--color-primary);
 	padding: 15px;
 }
 
