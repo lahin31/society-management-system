@@ -488,7 +488,7 @@ const HomePage = (props) => {
                               </div>
                               <div className="content_action">
                                 <Button
-                                  className="btn-bg-color"
+                                  className="details_btn"
                                   onClick={() =>
                                     handleDetailsOpen(
                                       registeredSocietyEvent,
@@ -543,7 +543,7 @@ const HomePage = (props) => {
                               </div>
                               <div className="content_action">
                                 <Button
-                                  className="btn-bg-color"
+                                  className="details_btn"
                                   onClick={() =>
                                     handleDetailsOpen(
                                       registeredSocietyNotice,

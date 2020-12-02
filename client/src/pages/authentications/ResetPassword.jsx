@@ -133,8 +133,7 @@ const ResetPassword = () => {
             type="submit"
             fullWidth
             variant="contained"
-            color="primary"
-            className={classes.submit + ' btn-bg-color'}
+            className={classes.submit}
           >
             {loading ? (
               <Loader width={5} height={5} />

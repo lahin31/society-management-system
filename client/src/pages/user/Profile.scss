@@ -42,6 +42,11 @@
 				}
 			}
 		}
+		.edit_profile_btn {
+			.btn {
+				background-color: var(--color-primary);
+			}
+		}
 	}
 }
 
@@ -80,6 +85,9 @@
 			}
 			.edit_profile_btn {
 				margin-top: 20px;
+				.btn {
+					background-color: var(--color-primary);
+				}
 			}
 		}
 	}

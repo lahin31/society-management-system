@@ -1,5 +1,9 @@
 @import "../../constants/global/variables.scss";
 
+.flex {
+	display: flex;
+}
+
 .home_wrapper,
 .update_society_wrapper {
 	// background-color: #F1F2F2;
@@ -33,7 +37,7 @@
 				}
 
 				.selected {
-					background-color: green;
+					background-color: #008000;
 					color: #fff;
 				}
 			}
@@ -172,6 +176,13 @@
 
 					.content_description {
 						margin-bottom: 20px;
+					}
+
+					.content_action {
+						.details_btn {
+							background-color: var(--color-primary);
+							color: #fff;
+						}
 					}
 				}
 

@@ -113,7 +113,7 @@ const Login = (props) => {
       )}
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar + ' btn-bg-color'}>
+        <Avatar className={classes.avatar + ' login_avatar'}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5" data-testid="login-title">
@@ -148,8 +148,7 @@ const Login = (props) => {
             type="submit"
             fullWidth
             variant="contained"
-            color="secondary"
-            className={classes.submit + ' btn-bg-color'}
+            className={classes.submit + ' submit_btn'}
           >
             {loading ? <Loader width={5} height={5} /> : 'Login'}
           </Button>

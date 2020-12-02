@@ -184,7 +184,7 @@ const ProfilePage = (props) => {
               <Button
                 variant="contained"
                 color="secondary"
-                className="btn-bg-color"
+                className="btn"
                 onClick={() => goToEditPage(user.username)}
               >
                 Edit Profile

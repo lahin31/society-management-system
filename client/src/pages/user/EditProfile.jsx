@@ -330,7 +330,7 @@ const EditProfile = ({ history }) => {
                   fullWidth
                   variant="contained"
                   color="secondary"
-                  className={classes.submit + ' btn-bg-color'}
+                  className={classes.submit + ' update_btn'}
                 >
                   Update
                 </Button>

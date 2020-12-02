@@ -33,7 +33,7 @@ const IndexPage = () => {
             Society Management System
           </h1>
           <p>We help you to engage with your societies</p>
-          <div className="action_btn text-align-center">
+          <div className="action_btn">
             <Link to="/login">
               <Button
                 variant="contained"

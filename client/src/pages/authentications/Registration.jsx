@@ -137,7 +137,7 @@ const RegistrationPage = () => {
       )}
       <CssBaseline />
       <div className={classes.paper}>
-        <Avatar className={classes.avatar + ' btn-bg-color'}>
+        <Avatar className={classes.avatar + ' reg_avatar'}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
@@ -252,7 +252,7 @@ const RegistrationPage = () => {
             fullWidth
             variant="contained"
             color="secondary"
-            className={classes.submit + ' btn-bg-color'}
+            className={classes.submit + ' submit_btn'}
           >
             {loading ? <Loader width={5} height={5} /> : 'Register'}
           </Button>

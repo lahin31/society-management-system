@@ -90,6 +90,17 @@ a {
   transition: opacity 150ms linear;
 }
 
+form {
+  .submit_btn {
+    background-color: var(--color-primary);
+    color: #fff;
+  }
+
+  .submit_btn:hover {
+    color: #32353E;
+  }
+}
+
 
 @media(max-width: 850px) {
   .body_text {
