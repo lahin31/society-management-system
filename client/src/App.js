@@ -13,6 +13,7 @@ import Login from './pages/authentications/Login';
 import Registration from './pages/authentications/Registration';
 import ForgetPassword from './pages/authentications/ForgetPassword';
 import ConfirmingAccount from './pages/authentications/ConfirmingAccount';
+import EmailConfirmation from './pages/authentications/EmailConfirmation'
 import ProfilePage from './pages/user/Profile';
 import EditProfile from './pages/user/EditProfile';
 import ContactUs from './pages/contact-us/ContactUs';
@@ -112,6 +113,12 @@ function App() {
               <Route
                 path="/confirmation/:token"
                 component={ConfirmingAccount}
+              />
+            )}
+            {!token && (
+              <Route
+                path="/email-confirmation/:token"
+                component={EmailConfirmation}
               />
             )}
             {!token && (

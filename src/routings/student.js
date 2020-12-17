@@ -6,6 +6,7 @@ const checkAuth = require("../middlewares/check-auth");
 
 router.get("/check-reset-token/:token", studentsController.checkResetToken);
 router.get("/confirmation/:token", authController.confirmingAccount);
+router.get("/email-confirmation/:token", authController.emailConfirmation);
 
 router.post("/student-registration", authController.createStudent);
 router.post("/student-login", authController.postLogin);

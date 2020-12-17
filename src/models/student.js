@@ -20,6 +20,11 @@ const studentSchema = new Schema({
     type: String,
     required: false,
   },
+  email_confirmation: {
+    type: String,
+    required: false,
+    default: "not_confirmed"
+  },
   accountConfirmationToken: {
     type: String,
     required: false,

@@ -80,7 +80,7 @@ const RegistrationPage = () => {
       .then((res) => {
         if (res.message === 'User Created') {
           setMessage(
-            'Your account is created successfully, please wait an admin will confirm your account.'
+            'Your account is created successfully, please wait an admin will confirm your account. Please verify your email also.'
           );
           name.current.value = '';
           username.current.value = '';

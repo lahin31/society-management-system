@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 exports.makeDb = () => {
   mongoose.set("useCreateIndex", true);
   mongoose.connect(
-    `mongodb://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@ds243049.mlab.com:43049/society-management`,
+    `mongodb+srv://lahin:WMOhiutywbZLB1c0@cluster0.fzt7a.mongodb.net/society-management?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

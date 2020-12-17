@@ -69,22 +69,32 @@ exports.registration = async (student_info) => {
     accountConfirmationToken: token,
   });
 
-  const emailOptions = {
-    from: existing_student.email,
-    to: `${process.env.EMAIL_ADDRESS}`,
+  const emailConfirmationOptions = {
+    from: `${process.env.EMAIL_ADDRESS}`,
+    to: existing_student.email,
     service: "gmail",
-    subject: "Confirmation for a new student...",
-    text: `Someone is requested to register. His/her name is ${existing_student.name}. Check full details http://localhost:3000/confirmation/${token}`,
-  };
-
-  if (emailUtils.sendEmail(emailOptions) === "success") {
-    return {
-      message: "User Created",
+    subject: "Please confirm your email...",
+    text: `Before we can get started, we have to confirm your email address. Just click here: http://localhost:3000/email-confirmation/${token}`
+  }
+  
+  if(emailUtils.sendEmail(emailConfirmationOptions) === "success") {
+    const emailOptions = {
+      from: existing_student.email,
+      to: `${process.env.EMAIL_ADDRESS}`,
+      service: "gmail",
+      subject: "Confirmation for a new student...",
+      text: `Someone is requested to register. His/her name is ${existing_student.name}. Check full details http://localhost:3000/confirmation/${token}`,
     };
-  } else {
-    return {
-      error: "Something went wrong",
-    };
+  
+    if (emailUtils.sendEmail(emailOptions) === "success") {
+      return {
+        message: "User Created",
+      };
+    } else {
+      return {
+        error: "Something went wrong",
+      };
+    }
   }
 };
 

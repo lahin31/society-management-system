@@ -104,6 +104,27 @@ exports.confirmingAccount = async (req, res) => {
   }
 };
 
+exports.emailConfirmation = async (req, res) => {
+  try {
+    const token = req.params.token;
+    const student = await Student.findOne({ accountConfirmationToken: token });
+    if (!student) {
+      return res.status(500).json({
+        error: "Not a valid token",
+      });
+    }
+    await student.updateOne({
+      email_confirmation: "confirmed"
+    })
+    res.status(200).json({
+      status: "confirmed",
+      student
+    });
+  } catch (err) {
+    res.status(500);
+  }
+}
+
 exports.activateAccount = async (req, res) => {
   try {
     const token = req.body.token;
