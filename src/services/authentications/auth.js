@@ -1,15 +1,15 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
-const redis = require("redis");
+// const redis = require("redis");
 
 const Student = require("../../models/student");
 const genAccTkn = require("../../helpers/genAccessToken");
 const emailUtils = require("../../utils/sendEmail");
 
-const REDIS_PORT = process.env.REDIS_PORT || 6379;
+// const REDIS_PORT = process.env.REDIS_PORT || 6379;
 
-const client = redis.createClient(REDIS_PORT);
+// const client = redis.createClient(REDIS_PORT);
 
 let refreshTokens = [];
 
@@ -133,7 +133,7 @@ exports.Login = async (email, password) => {
   );
   // saving refresh tokens in an array
   refreshTokens.push(refreshToken);
-  client.setex("refreshTokens", 12000, JSON.stringify(refreshTokens));
+  // client.setex("refreshTokens", 12000, JSON.stringify(refreshTokens));
   return {
     message: "Authenticate successfull",
     userId: student._id,

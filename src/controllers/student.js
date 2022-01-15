@@ -1,15 +1,15 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const crypto = require("crypto");
-const redis = require("redis");
+// const redis = require("redis");
 
 const Student = require("../models/student");
 const genAccTkn = require("../helpers/genAccessToken");
 const emailUtils = require("../utils/sendEmail");
 
-const REDIS_PORT = process.env.REDIS_PORT || 6379;
+// const REDIS_PORT = process.env.REDIS_PORT || 6379;
 
-const client = redis.createClient(REDIS_PORT);
+// const client = redis.createClient(REDIS_PORT);
 
 exports.updateStudentInfo = async (req, res) => {
   try {
@@ -199,11 +199,11 @@ exports.generateToken = async (req, res) => {
       return res.status(401);
     }
 
-    client.get("refreshTokens", function (err, result) {
-      if (result && !JSON.parse(result).includes(refreshToken)) {
-        return res.status(403);
-      }
-    });
+    // client.get("refreshTokens", function (err, result) {
+    //   if (result && !JSON.parse(result).includes(refreshToken)) {
+    //     return res.status(403);
+    //   }
+    // });
 
     jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
       if (err) return res.status(403);
